@@ -1,1 +1,1 @@
-web: gunicorn mobile-teledentistry.wsgi
+web: gunicorn teledentistry.wsgi
