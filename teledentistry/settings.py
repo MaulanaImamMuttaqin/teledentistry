@@ -177,6 +177,6 @@ AUTH_USER_MODEL = 'auth_api.CustomUser'
 
 AUTHENTICATION_BACKENDS = ['auth_api.auth_backends.EmailBackend']
 
-# STATIC_ROOT = path.join(BASE_DIR, 'static')
+STATIC_ROOT = path.join(BASE_DIR, 'static')
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
