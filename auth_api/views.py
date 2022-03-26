@@ -7,7 +7,7 @@ class RegisterView(generics.CreateAPIView):
     queryset = get_user_model().objects.all()
     serializer_class = UserSerializer
     
-
+    
     # def post(self, *args, **kwargs):
     #     serializer = UserSerializer(data=self.request.data)
     #     if serializer.is_valid():
@@ -18,3 +18,6 @@ class RegisterView(generics.CreateAPIView):
 
 class EmailTokenObtainPairView(TokenObtainPairView):
     serializer_class = TokenObtainPairSerializer
+
+
+# class LoginView()
