@@ -22,12 +22,12 @@ class TokenObtainPairSerializer(JwtTokenObtainPairSerializer):
 class UserSerializer(serializers.ModelSerializer):
 
     ROLES = (
-        ('0', 'Patient'),
-        ('1', 'Doctor')
+        (0, 'Patient'),
+        (1, 'Doctor')
     )
     password = serializers.CharField(write_only=True, required=True, validators=[validate_password])
     # password2 = serializers.CharField(write_only=True, required=True)
-    role_id = serializers.ChoiceField(default="0", choices=ROLES)
+    role_id = serializers.ChoiceField(default=0, choices=ROLES)
 
     class Meta:
         model = User
