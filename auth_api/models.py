@@ -40,8 +40,8 @@ class CustomUserManager(BaseUserManager):
 
 class CustomUser(AbstractUser):
     ROLES = (
-        ('0', 'Patient'),
-        ('1', 'Doctor')
+        (0, 'Patient'),
+        (1, 'Doctor')
     )
     
     username = None

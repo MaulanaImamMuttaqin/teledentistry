@@ -14,8 +14,9 @@ class TokenObtainPairSerializer(JwtTokenObtainPairSerializer):
         # Add custom claims
         # token['name'] = f'{user.first_name} {user.last_name}'
         token['email'] = user.email
-        token['role_id'] = user.role_id
+        token['role_id'] = int(user.role_id)
         return token
+
 
 
 class UserSerializer(serializers.ModelSerializer):
