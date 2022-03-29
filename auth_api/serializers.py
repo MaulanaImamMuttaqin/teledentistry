@@ -1,5 +1,4 @@
 
-from asyncio.windows_events import NULL
 from django.contrib.auth import get_user_model
 from rest_framework import serializers
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer as JwtTokenObtainPairSerializer
@@ -16,13 +15,6 @@ class TokenObtainPairSerializer(JwtTokenObtainPairSerializer):
         # token['name'] = f'{user.first_name} {user.last_name}'
         token['email'] = user.email
         token['role_id'] = int(user.role_id)
-
-        # response = {
-        #     "error": NULL,
-        #     "code" : 200,
-        #     "data" : token,
-        #     "message" : "success"
-        # }
         return token
 
 
