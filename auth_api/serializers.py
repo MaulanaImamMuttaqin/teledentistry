@@ -17,13 +17,13 @@ class TokenObtainPairSerializer(JwtTokenObtainPairSerializer):
         token['email'] = user.email
         token['role_id'] = int(user.role_id)
 
-        response = {
-            "error": NULL,
-            "code" : 200,
-            "data" : token,
-            "message" : "success"
-        }
-        return response
+        # response = {
+        #     "error": NULL,
+        #     "code" : 200,
+        #     "data" : token,
+        #     "message" : "success"
+        # }
+        return token
 
 
 
