@@ -1,5 +1,4 @@
 
-from asyncio.windows_events import NULL
 from django.contrib.auth import get_user_model
 from rest_framework_simplejwt.views import TokenObtainPairView
 from .serializers import UserSerializer, TokenObtainPairSerializer
@@ -35,7 +34,7 @@ class EmailTokenObtainPairView(TokenObtainPairView):
 
         if serializer.is_valid(raise_exception= True):
             response = {
-                "error" : NULL,
+                "error" : None,
                 "code" : 200,
                 "data" : serializer.validated_data,
                 "message" : "Success"
