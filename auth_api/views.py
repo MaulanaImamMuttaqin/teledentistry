@@ -24,11 +24,24 @@ class RegisterView(generics.CreateAPIView):
 
         else :
             response = {
-                    "error" : serializer.errors,
+                    "error" : True,
+                    "message" : serializer.errors,
             }
             return Response(response, status=status.HTTP_400_BAD_REQUEST)
         
-
+# def create(self, request, *args, **kwargs):
+#         serializer = self.get_serializer(data=request.data)
+#         serializer.is_valid(raise_exception=True)
+#         self.perform_create(serializer)
+#         headers = self.get_success_headers(serializer.data)
+#         response = {
+#                 "error" : None,
+#                 "code" : 200,
+#                 "data" : serializer.data,
+#                 "message" : "Success create new data"
+#             }
+        
+#         return Response(response, status=status.HTTP_201_CREATED, headers=headers)
 
 
 class EmailTokenObtainPairView(TokenObtainPairView):
