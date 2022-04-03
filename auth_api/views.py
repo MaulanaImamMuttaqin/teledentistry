@@ -58,7 +58,7 @@ class EmailTokenObtainPairView(TokenObtainPairView):
         # return Response(serializer.validated_data, status=status.HTTP_200_OK)
         print(serializer.is_valid())
 
-        if not serializer.is_valid():
+        if serializer.is_valid():
             response = {
                 "error" : None,
                 "code" : 200,
