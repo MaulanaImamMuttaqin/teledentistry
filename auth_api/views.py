@@ -71,7 +71,7 @@ class EmailTokenObtainPairView(TokenObtainPairView):
                 "error" : True,
                 "message" : serializer.errors
             }
-            return Response({"error" : True}, status=status.HTTP_400_BAD_REQUEST)
+            return Response(response, status=status.HTTP_400_BAD_REQUEST)
             
 
 # class LoginView()
