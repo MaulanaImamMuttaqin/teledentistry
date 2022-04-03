@@ -7,14 +7,14 @@ from django.utils.translation import ugettext_lazy as _
 
 User = get_user_model()
 
-class TokenObtainPairSerializer(JwtTokenObtainPairSerializer):
+class MyTokenObtainPairSerializer(JwtTokenObtainPairSerializer):
     default_error_messages = {
         "no_active_account": _("Incorrect Email or Password")
     }
 
     @classmethod
     def get_token(cls, user):
-        token = super(TokenObtainPairSerializer, cls).get_token(user)
+        token = super(MyTokenObtainPairSerializer, cls).get_token(user)
 
         # Add custom claims
         # token['name'] = f'{user.first_name} {user.last_name}'
