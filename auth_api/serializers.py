@@ -8,9 +8,7 @@ from django.utils.translation import ugettext_lazy as _
 User = get_user_model()
 
 class MyTokenObtainPairSerializer(JwtTokenObtainPairSerializer):
-    default_error_messages = {
-        "no_active_account": _("Incorrect Email or Password")
-    }
+    
 
     @classmethod
     def get_token(cls, user):
