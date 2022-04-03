@@ -7,6 +7,11 @@ from django.contrib.auth.password_validation import validate_password
 User = get_user_model()
 
 class TokenObtainPairSerializer(JwtTokenObtainPairSerializer):
+    default_error_messages = {
+                "error" : True,
+                "message" : "Incorrect Email or Password"
+            }
+
     @classmethod
     def get_token(cls, user):
         token = super(TokenObtainPairSerializer, cls).get_token(user)
