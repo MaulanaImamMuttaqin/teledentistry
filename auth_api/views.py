@@ -24,8 +24,8 @@ class RegisterView(generics.CreateAPIView):
 
         else :
             response = {
-                    "error" : True,
-                    "message" : serializer.errors,
+                    "error" : serializer.errors,
+                    "message" : "Failed create new data",
             }
             return Response(response, status=status.HTTP_400_BAD_REQUEST)
         
@@ -56,6 +56,7 @@ class EmailTokenObtainPairView(TokenObtainPairView):
         #     raise InvalidToken(e.args[0])
 
         # return Response(serializer.validated_data, status=status.HTTP_200_OK)
+        print(serializer.is_valid())
 
         if serializer.is_valid():
             response = {
@@ -65,7 +66,7 @@ class EmailTokenObtainPairView(TokenObtainPairView):
                 "message" : "Success"
             }
             return Response(response, status=status.HTTP_200_OK)
-        
+        print("not valid")
         return Response({
                 "error" : True,
                 "message" : serializer.errors
