@@ -9,10 +9,7 @@ User = get_user_model()
 
 class TokenObtainPairSerializer(JwtTokenObtainPairSerializer):
     default_error_messages = {
-        "no_active_account": {
-                "error" : _("Incorrect Email or Password"),
-                "message" : _("Failed to Login")
-            }
+        "no_active_account": _("Incorrect Email or Password")
     }
 
     @classmethod
