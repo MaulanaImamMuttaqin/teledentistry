@@ -1,4 +1,3 @@
-
 from django.contrib.auth import get_user_model
 from rest_framework_simplejwt.views import TokenObtainPairView
 from .serializers import UserSerializer, TokenObtainPairSerializer
@@ -21,14 +20,14 @@ class RegisterView(generics.CreateAPIView):
                     "data" : serializer.data,
                     "message" : "Success create new data"
                 }
+            return Response(response, status=status.HTTP_201_CREATED, headers=headers)
+
         else :
             response = {
-                    "error" : None,
-                    "code" : 400,
-                    "message" : serializer.errors
+                    "error" : serializer.errors,
             }
-
-        return Response(response, status=status.HTTP_201_CREATED, headers=headers)
+            return Response(response, status=status.HTTP_400_BAD_REQUEST)
+        
 
 
 
