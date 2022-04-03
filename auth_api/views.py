@@ -64,14 +64,11 @@ class EmailTokenObtainPairView(TokenObtainPairView):
                 "data" : serializer.validated_data,
                 "message" : "Success"
             }
-
             return Response(response, status=status.HTTP_200_OK)
-        else:
-            response = {
+        
+        return Response({
                 "error" : True,
                 "message" : serializer.errors
-            }
-            return Response(response, status=status.HTTP_400_BAD_REQUEST)
-            
+            }, status=status.HTTP_400_BAD_REQUEST)
 
 # class LoginView()
