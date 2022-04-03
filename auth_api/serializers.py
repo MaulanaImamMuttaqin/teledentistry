@@ -3,14 +3,17 @@ from django.contrib.auth import get_user_model
 from rest_framework import serializers
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer as JwtTokenObtainPairSerializer
 from django.contrib.auth.password_validation import validate_password
+from django.utils.translation import ugettext_lazy as _
 
 User = get_user_model()
 
 class TokenObtainPairSerializer(JwtTokenObtainPairSerializer):
     default_error_messages = {
-                "error" : True,
-                "message" : "Incorrect Email or Password"
+        "no_active_account": {
+                "error" : _("Incorrect Email or Password"),
+                "message" : _("Failed to Login")
             }
+    }
 
     @classmethod
     def get_token(cls, user):
