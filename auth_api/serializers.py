@@ -25,22 +25,7 @@ class MyTokenObtainPairSerializer(JwtTokenObtainPairSerializer):
         token['role_id'] = int(user.role_id)
         return token
 
-class ChoiceField(serializers.ChoiceField):
 
-    def to_representation(self, obj):
-        if obj == '' and self.allow_blank:
-            return obj
-        return self._choices[obj]
-
-    def to_internal_value(self, data):
-        # To support inserts with the value
-        if data == '' and self.allow_blank:
-            return ''
-
-        for key, val in self._choices.items():
-            if val == data:
-                return key
-        self.fail('invalid_choice', input=data) 
 
 class UserSerializer(serializers.ModelSerializer):
 
@@ -50,7 +35,7 @@ class UserSerializer(serializers.ModelSerializer):
     )
     password = serializers.CharField(write_only=True, required=True, validators=[validate_password])
     # password2 = serializers.CharField(write_only=True, required=True)
-    role_id = ChoiceField(choices=User.ROLES)
+    role_id = serializers.ChoiceField(default=0, choices=ROLES)
 
     class Meta:
         model = User
@@ -67,7 +52,7 @@ class UserSerializer(serializers.ModelSerializer):
     #         raise serializers.ValidationError({"password": "Password fields didn't match."})
 
     #     return attrs
-    
+
     def create(self, validated_data):
         # data yang mau dimasukin ke database user
         user = User.objects.create(
