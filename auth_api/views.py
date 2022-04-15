@@ -43,6 +43,12 @@ class RegisterView(generics.CreateAPIView):
         
 #         return Response(response, status=status.HTTP_201_CREATED, headers=headers)
 
+# def post(self, *args, **kwargs):
+    #     serializer = UserSerializer(data=self.request.data)
+    #     if serializer.is_valid():
+    #         get_user_model().objects.create_user(**serializer.validated_data)
+    #         return Response(status=HTTP_201_CREATED)
+    #     return Response(status=HTTP_400_BAD_REQUEST, data={'errors': serializer.errors})
 
 class EmailTokenObtainPairView(TokenObtainPairView):
     serializer_class = MyTokenObtainPairSerializer
@@ -74,3 +80,6 @@ class EmailTokenObtainPairView(TokenObtainPairView):
             }, status=status.HTTP_400_BAD_REQUEST)
 
 # class LoginView()
+
+
+    

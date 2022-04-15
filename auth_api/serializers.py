@@ -52,7 +52,7 @@ class UserSerializer(serializers.ModelSerializer):
     #         raise serializers.ValidationError({"password": "Password fields didn't match."})
 
     #     return attrs
-
+    
     def create(self, validated_data):
         # data yang mau dimasukin ke database user
         user = User.objects.create(
