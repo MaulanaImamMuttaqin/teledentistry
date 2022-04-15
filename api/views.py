@@ -20,6 +20,11 @@ class UserProfile(generics.RetrieveUpdateAPIView):
     queryset = get_user_model().objects.all()
     permission_classes  = [IsAuthenticated]
     serializer_class = UserSerializer
-
+    
+    def retrieve(self, request, *args, **kwargs):
+        instance = self.get_object()
+        serializer = self.get_serializer(instance)
+        print(serializer.data)
+        return Response(serializer.data)
 
 
