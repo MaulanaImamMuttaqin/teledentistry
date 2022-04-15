@@ -25,11 +25,15 @@ class UserProfile(generics.RetrieveUpdateAPIView):
         instance = self.get_object()
         serializer = self.get_serializer(instance)
         print(serializer.data)
-        serializer.data["role_id"] = get_user_model().ROLES[serializer.data["role_id"]][1]
+
+        print(get_user_model().ROLES[serializer.data["role_id"]][1])
         return Response({
                     "error" : None,
                     "code" : 200,
-                    "data" : serializer.data,
+                    "data" : {
+                        **serializer.data,
+                        "role_id" : get_user_model().ROLES[serializer.data["role_id"]][1]
+                    },
                     "message" : "Success Fetching user profile"
                 })
 
