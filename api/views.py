@@ -6,7 +6,7 @@ from rest_framework import status
 from rest_framework import generics
 from django.contrib.auth import get_user_model
 
-from teledentistry.auth_api.serializers import UserSerializer
+from auth_api.serializers import UserSerializer
 
 # Create your views here.
 class TestView(APIView):
@@ -21,5 +21,5 @@ class UserProfile(generics.RetrieveUpdateAPIView):
     permission_classes  = [IsAuthenticated]
     serializer_class = UserSerializer
 
-    
+
 
