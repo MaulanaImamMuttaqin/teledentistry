@@ -25,6 +25,12 @@ class UserProfile(generics.RetrieveUpdateAPIView):
         instance = self.get_object()
         serializer = self.get_serializer(instance)
         print(serializer.data)
-        return Response(serializer.data)
+        
+        return Response({
+                    "error" : None,
+                    "code" : 200,
+                    "data" : serializer.data,
+                    "message" : "Success Fetching user profile"
+                })
 
 
