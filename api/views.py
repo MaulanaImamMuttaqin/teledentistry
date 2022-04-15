@@ -32,7 +32,7 @@ class UserProfile(generics.RetrieveUpdateAPIView):
                     "code" : 200,
                     "data" : {
                         **serializer.data,
-                        "role_id" : get_user_model().ROLES[serializer.data["role_id"]][1]
+                        "roles" : get_user_model().ROLES[serializer.data["role_id"]][1]
                     },
                     "message" : "Success Fetching user profile"
                 })
